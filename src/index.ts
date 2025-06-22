@@ -5,6 +5,9 @@ import dotenv from "dotenv";
 import cors from "cors";
 import redisClient from "./cache/redisClient";
 
+import tokenRoutes from "./routes/tokenRoutes";
+
+
 dotenv.config();
 
 const app = express();
@@ -13,12 +16,18 @@ const io = new Server(server, {
   cors: { origin: "*" }
 });
 
-app.use(cors());
+// Middleware
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
+
 
 app.get("/", (req, res) => {
   res.send("Meme Coin Aggregator is running");
 });
+
+
+app.use("/api/v1/tokens", tokenRoutes);
 
 io.on("connection", (socket) => {
   console.log("Client connected:", socket.id);
