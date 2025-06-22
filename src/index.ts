@@ -4,36 +4,40 @@ import { Server } from "socket.io";
 import dotenv from "dotenv";
 import cors from "cors";
 import redisClient from "./cache/redisClient";
-
 import tokenRoutes from "./routes/tokenRoutes";
-
 
 dotenv.config();
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server, {
+
+// ✅ Export io for use in controllers
+export let io: Server;
+io = new Server(server, {
   cors: { origin: "*" }
 });
 
-// Middleware
+// ✅ Middleware
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
 
-
+// ✅ Routes
 app.get("/", (req, res) => {
   res.send("Meme Coin Aggregator is running");
 });
-
-
 app.use("/api/v1/tokens", tokenRoutes);
 
+// ✅ WebSocket Events
 io.on("connection", (socket) => {
-  console.log("Client connected:", socket.id);
-  socket.on("disconnect", () => console.log("Client disconnected:", socket.id));
+  console.log("⚡ Client connected:", socket.id);
+
+  socket.on("disconnect", () => {
+    console.log("❌ Client disconnected:", socket.id);
+  });
 });
 
+// ✅ Start server
 const PORT = process.env.PORT || 5000;
 
 const startServer = async () => {
@@ -42,10 +46,10 @@ const startServer = async () => {
     console.log("✅ Redis connected");
 
     server.listen(PORT, () => {
-      console.log(`🚀 Server running on http://localhost:${PORT}`);
+      console.log(`🚀 Server running at http://localhost:${PORT}`);
     });
   } catch (error) {
-    console.error("❌ Failed to connect to Redis:", error);
+    console.error("❌ Failed to start server:", error);
     process.exit(1);
   }
 };
