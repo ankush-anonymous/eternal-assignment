@@ -1,3 +1,6 @@
+#!/bin/bash
+
+cat > README.md << 'EOF'
 # 🚀 Real-time Meme Coin Aggregator
 
 A backend service that aggregates and deduplicates real-time meme coin data from multiple DEX APIs. Streams live price updates via WebSockets and supports sorting, filtering, and pagination like AxiomTrade.
@@ -178,3 +181,7 @@ npm run poller  # Starts live polling updates
 - ✅ REST API output (Postman)
 - ✅ WebSocket console update
 - ✅ Redis TTL proof via CLI (TTL key)
+EOF
+
+echo "✅ README.md generated successfully!"
+echo "📄 File location: $(pwd)/README.md"

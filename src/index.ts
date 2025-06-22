@@ -5,6 +5,8 @@ import dotenv from "dotenv";
 import cors from "cors";
 import redisClient from "./cache/redisClient";
 import tokenRoutes from "./routes/tokenRoutes";
+import { startTokenPolling } from "./services/realTimeUpdater"; // or wherever the poller is
+
 
 dotenv.config();
 
@@ -27,6 +29,8 @@ app.get("/", (req, res) => {
   res.send("Meme Coin Aggregator is running");
 });
 app.use("/api/v1/tokens", tokenRoutes);
+// startTokenPolling(["bonk", "pepe", "doge", "wif", "pipecto"]); // popular meme coins
+
 
 // ✅ WebSocket Events
 io.on("connection", (socket) => {
@@ -36,6 +40,8 @@ io.on("connection", (socket) => {
     console.log("❌ Client disconnected:", socket.id);
   });
 });
+
+
 
 // ✅ Start server
 const PORT = process.env.PORT || 5000;
