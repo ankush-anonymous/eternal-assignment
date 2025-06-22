@@ -117,11 +117,7 @@ GeckoTerminal fetch failed: Request failed with status code 404
 
 ---
 
-## 🧪 Testing
-
-```bash
-npm run test
-```
+## 🧪 Postman Collection -> https://warped-rocket-540476.postman.co/workspace/Eternal-assignment~b0438b27-dd5c-40cf-a0e8-57022c1751ee/request/23728986-d24a63d7-f11e-4a1f-af07-c99c667fbec0?action=share&creator=23728986&ctx=documentation
 
 ✅ **Covers:**
 - REST routes (200, 400, 500 cases)
@@ -167,14 +163,23 @@ npm run poller  # Starts live polling updates
 - ✅ Real-time WebSocket token updates
 - ✅ Redis caching with TTL
 - ✅ Rate-limit handling with retry/backoff
-- ⬜ Postman Collection
+- ✅ Postman Collection
 - ⬜ 10+ Tests
-- ⬜ Demo Video
+- ✅ Demo Video
 
 ---
 
 ## 📸 Screenshots (to be added manually)
 
 - ✅ REST API output (Postman)
-- ✅ WebSocket console update
+![image](https://github.com/user-attachments/assets/958b8939-3b99-4e89-8aff-fdb110c8476f)
+![image](https://github.com/user-attachments/assets/23d9abbf-86e1-422f-a9f0-85e752509199)
+![image](https://github.com/user-attachments/assets/07ed91e4-ea95-448c-8210-da2865742225)
+![image](https://github.com/user-attachments/assets/1681f1dd-d743-463f-b047-c2d3af1d1197)
+
 - ✅ Redis TTL proof via CLI (TTL key)
+![image](https://github.com/user-attachments/assets/76a24e6d-d219-456d-ac01-4532bad0a66d)
+![image](https://github.com/user-attachments/assets/80a85763-c15e-4c53-a403-7d4f269c4b18)
+  
+- ✅ Video link -> https://drive.google.com/file/d/17XcJKQ1tKDQvoR8a2UdRi9RJOx5OPTEt/view?usp=sharing
+
